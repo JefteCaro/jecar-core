@@ -86,7 +86,7 @@ class MigrationGenerator extends Command
 
     public function migrationFilePath(string $name)
     {
-        return database_path('migrations/' . date('Y_m_d_His', time()) . '_create_' .  Str::snake($this->buildTableName($name))  . 'table.php');
+        return database_path('migrations/' . date('Y_m_d_His', time()) . '_create_' .  Str::snake($this->buildTableName($name))  . '_table.php');
     }
 
     public function getStub(string $path)
