@@ -14,6 +14,14 @@ class MediaFileResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'name' => $this->name,
+            'alt' => $this->alt,
+            'caption' => $this->caption,
+            'path' => $this->path,
+            'relative_path' => 'uploads/' . $this->path,
+            'href' => route('jecar.media.file', ['path' => $this->path]),
+            'created_at' => $this->created_at
+        ];
     }
 }
