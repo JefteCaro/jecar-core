@@ -4,9 +4,11 @@ namespace Jecar\Core\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
+use Jecar\Core\Collections\MediaFileCollection;
 use League\Glide\Filesystem\FileNotFoundException;
 use Jecar\Core\Facades\MediaFile;
 use TusPhp\Events\TusEvent;
+use Jecar\Core\Models\MediaFile as Files;
 
 class MediaFilesController extends BaseController
 {
@@ -27,7 +29,9 @@ class MediaFilesController extends BaseController
 
     public function index(Request $request)
     {
+        $files = Files::paginate(50);
 
+        return response()->json(new MediaFileCollection($files));
     }
 
     public function upload(Request $request)

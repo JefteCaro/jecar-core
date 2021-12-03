@@ -47,6 +47,8 @@ class MediaFileService
 
             Route::any('/upload/{any?}', [MediaFilesController::class, 'upload'])->name('media.upload')->where('any', '.*');
 
+            Route::get('/uploads', [MediaFilesController::class, 'index'])->name('media');
+
             Route::get('/uploads/{path}', [MediaFilesController::class, 'show'])->name('media.file');
 
         });
