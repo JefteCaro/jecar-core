@@ -42,9 +42,13 @@ class MediaFileService
 
     public function routes()
     {
-        Route::get('/uploads/{path}', [MediaFilesController::class, 'show']);
+        Route::group(['as' => 'jecar.'], function() {
 
-        Route::any('/uploads/{any?}', [MediaFilesController::class, 'upload'])->where('any', '.*');
+            Route::get('/uploads/{path}', [MediaFilesController::class, 'show'])->name('media.file');
+
+            Route::any('/uploads/{any?}', [MediaFilesController::class, 'upload'])->name('media.upload')->where('any', '.*');
+
+        });
 
     }
 
