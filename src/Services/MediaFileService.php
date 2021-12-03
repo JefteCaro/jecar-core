@@ -5,6 +5,7 @@ namespace Jecar\Core\Services;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 use Jecar\Core\Controllers\MediaFilesController;
+use Jecar\Core\Models\MediaFile;
 use League\Glide\ServerFactory;
 use League\Glide\Responses\LaravelResponseFactory;
 use TusPhp\Tus\Server as TusServer;
@@ -35,7 +36,7 @@ class MediaFileService
         $server = new TusServer(($this->config['storage']['driver']) ?: '');
 
         $server
-            ->setApiPath('/uploads') // tus server endpoint.
+            ->setApiPath('/upload') // tus server endpoint.
             ->setUploadDir($this->getUploadsFolder()); // uploads dir.
             return $server;
     }
@@ -44,12 +45,22 @@ class MediaFileService
     {
         Route::group(['as' => 'jecar.'], function() {
 
-            Route::get('/uploads/{path}', [MediaFilesController::class, 'show'])->name('media.file');
+            Route::any('/upload/{any?}', [MediaFilesController::class, 'upload'])->name('media.upload')->where('any', '.*');
 
-            Route::any('/uploads/{any?}', [MediaFilesController::class, 'upload'])->name('media.upload')->where('any', '.*');
+            Route::get('/uploads/{path}', [MediaFilesController::class, 'show'])->name('media.file');
 
         });
 
+    }
+
+    public function create($file)
+    {
+        MediaFile::create([
+            'name' => $file->getName(),
+            'alt' => $file->getName(),
+            'caption',
+            'path' => $file->getName(),
+        ]);
     }
 
     private function getUploadsFolder()

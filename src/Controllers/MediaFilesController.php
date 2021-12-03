@@ -32,14 +32,13 @@ class MediaFilesController extends BaseController
 
     public function upload(Request $request)
     {
-        if($request->isMethod('GET')) {
-            return $this->index($request);
-        }
-
         $server = MediaFile::uploadServer();
 
         $server->event()->addListener('tus-server.upload.complete', function(TusEvent $event) {
-            dd($event);
+
+            $file = $event->getFile();
+
+            MediaFile::create($file);
         });
 
         return $server->serve();

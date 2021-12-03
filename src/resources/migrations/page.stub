@@ -16,9 +16,11 @@ class DummyMigrationClass extends Migration
         Schema::create('DummyTableName', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('alt');
-            $table->string('caption')->nullable();
-            $table->string('path');
+            $table->string('meta_title')->nullable();
+            $table->string('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->string('meta_image')->nullable();
+            $table->boolean('published')->default(false);
             $table->timestamps();
         });
     }

@@ -61,7 +61,7 @@ class MigrationGenerator extends Command
 
         $replace = [
             'DummyMigrationClass' => $this->buildCreateClass($name),
-            'DummyTableName' => $this->buildTableName($name)
+            'DummyTableName' => Str::snake($this->buildTableName($name))
         ];
 
         $output = str_replace(array_keys($replace), array_values($replace), $stub);
@@ -76,17 +76,17 @@ class MigrationGenerator extends Command
 
     public function buildTableName(string $name)
     {
-        return $this->getPrefix() . Str::plural(strtolower($name));
+        return $this->getPrefix() . Str::pluralStudly($name);
     }
 
     public function buildCreateClass(string $name)
     {
-        return 'Create' . Str::plural(ucfirst($this->getPrefix() . $name)) . 'Table';
+        return 'Create' . $this->buildTableName($name) . 'Table';
     }
 
     public function migrationFilePath(string $name)
     {
-        return database_path('migrations/' . date('Y_m_d_His', time()) . '_' .  Str::snake($this->buildCreateClass($name))  . '.php');
+        return database_path('migrations/' . date('Y_m_d_His', time()) . '_create_' .  Str::snake($this->buildTableName($name))  . 'table.php');
     }
 
     public function getStub(string $path)
