@@ -1,0 +1,29 @@
+{
+    "name": "jecar/core",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Jecar\\Core\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jecar",
+            "email": "carojefte@gmail.com"
+        }
+    ],
+    "require": {
+        "ankitpokhrel/tus-php": "*",
+        "league/glide": "*",
+        "league/glide-laravel": "dev-master",
+        "laravel/framework": "^7"
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Jecar\\Core\\Providers\\ServiceProvider"
+            ]
+        }
+    }
+}
