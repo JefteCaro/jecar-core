@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use League\Glide\Filesystem\FileNotFoundException;
 use Jecar\Core\Facades\MediaFile;
+use TusPhp\Events\TusEvent;
 
 class MediaFilesController extends BaseController
 {
@@ -24,8 +25,23 @@ class MediaFilesController extends BaseController
         }
     }
 
+    public function index(Request $request)
+    {
+
+    }
+
     public function upload(Request $request)
     {
-        return MediaFile::uploadServer()->serve();
+        if($request->isMethod('GET')) {
+            return $this->index($request);
+        }
+
+        $server = MediaFile::uploadServer();
+
+        $server->event()->addListener('tus-server.upload.complete', function(TusEvent $event) {
+            dd($event);
+        });
+
+        return $server->serve();
     }
 }
