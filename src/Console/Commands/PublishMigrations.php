@@ -24,17 +24,6 @@ class PublishMigrations extends MigrationGenerator
      */
     protected $description = 'Publishes Core migrations';
 
-
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     public function publish()
     {
         $this->publishMediaFile();

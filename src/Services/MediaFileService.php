@@ -92,6 +92,6 @@ class MediaFileService
 
     private function resourcePath(string $res)
     {
-        return __DIR__ . '../../resources/' . $res;
+        return __DIR__ . '../../../resources/' . $res;
     }
 }

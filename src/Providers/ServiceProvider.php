@@ -4,6 +4,7 @@ namespace Jecar\Core\Providers;
 
 use Illuminate\Support\ServiceProvider as BaseProvider;
 use Jecar\Core\Console\Commands\PublishMigrations;
+use Jecar\Core\Console\Commands\PublishViews;
 use Jecar\Core\Services\MediaFileService;
 
 class ServiceProvider extends BaseProvider
@@ -23,7 +24,8 @@ class ServiceProvider extends BaseProvider
         $this->publishables();
 
         $this->commands([
-            PublishMigrations::class
+            PublishMigrations::class,
+            PublishViews::class,
         ]);
 
     }
@@ -48,6 +50,6 @@ class ServiceProvider extends BaseProvider
 
     public function resourcePath(string $res)
     {
-        return __DIR__ . '../../resources/' . $res;
+        return __DIR__ . '../../../resources/' . $res;
     }
 }

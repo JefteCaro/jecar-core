@@ -2,12 +2,13 @@
 
 namespace Jecar\Core\Console\Commands;
 
+use Illuminate\Console\Command as BaseCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-class MigrationGenerator extends Command
+class Command extends BaseCommand
 {
     /**
      * The name and signature of the console command.
@@ -23,6 +24,21 @@ class MigrationGenerator extends Command
      */
     protected $description;
 
+
+    protected $files;
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->files = new Filesystem;
+        $this->config = Config::get('jecar', require($this->resourcePath('config/jecar.php')));
+    }
+
     /**
      * Execute the console command.
      *
@@ -32,6 +48,11 @@ class MigrationGenerator extends Command
     {
         $this->info('Publishing Migrations');
         $this->publish();
+    }
+
+    public function resourcePath(string $res)
+    {
+        return __DIR__ . '../../../../resources/' . $res;
     }
 
     public function buildContent($name, $stubPath)
