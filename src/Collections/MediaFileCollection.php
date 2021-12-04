@@ -2,9 +2,7 @@
 
 namespace Jecar\Core\Collections;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
-
-class MediaFileCollection extends ResourceCollection
+class MediaFileCollection extends Collection
 {
     public function __construct($resource)
     {
