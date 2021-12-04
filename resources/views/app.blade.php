@@ -15,7 +15,6 @@
 
     </head>
     <body class="font-sans antialiased">
-        <div id="jecar"></div>
         @yield('content')
     </body>
 </html>
