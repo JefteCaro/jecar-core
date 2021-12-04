@@ -21,6 +21,10 @@ class ServiceProvider extends BaseProvider
             return new MediaFileService;
         });
 
+        $this->loadViewsFrom(
+            $this->viewGroups(), 'jecar'
+        );
+
         $this->publishables();
 
         $this->commands([
@@ -28,6 +32,14 @@ class ServiceProvider extends BaseProvider
             PublishViews::class,
         ]);
 
+    }
+
+    public function viewGroups()
+    {
+        if(file_exists(resource_path('views/vendor/cms/app.blade.php'))) {
+            return resource_path('views/vendor/cms');
+        }
+        return  $this->resourcePath('views');
     }
 
     /**

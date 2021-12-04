@@ -11,6 +11,7 @@ return [
          * 'file', or 'redis'
          *
          * Empty or null defaults to 'file'
+         *
          */
         'driver' => 'redis',
 
@@ -33,10 +34,17 @@ return [
         'table_prefix' => env('DB_PREFIX', null),
     ],
 
+    /**
+     * Enable modules for CMS
+     *
+     * $ composer require jecar/cms
+     *
+     * 'user' => \App\Models\Users::class,
+     */
     'modules' => [
 
         'cms' => [
-
+            // 'user' => \App\Models\Users::class,
         ],
     ],
 ];
