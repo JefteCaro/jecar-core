@@ -27,8 +27,6 @@ class MigrationGenerator extends Command
 
     private $files;
 
-    protected $hidden = true;
-
     /**
      * Create a new command instance.
      *
