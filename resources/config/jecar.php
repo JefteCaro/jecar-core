@@ -34,15 +34,19 @@ return [
         'table_prefix' => env('DB_PREFIX', null),
     ],
 
-    /**
-     * Enable modules for CMS
-     *
-     * $ composer require jecar/cms
-     *
-     * 'user' => \App\Models\Users::class,
-     */
-    'modules' => [
 
+    'modules' => [
+        /**
+         * Enable modules for CMS
+         *
+         * $ composer require jecar/cms
+         *
+         * Create a list of Models with string representation
+         * CMS will use this list as reference for dynamically creating pages
+         *
+         * 'user' => \App\Models\Users::class,
+         *
+         */
         'cms' => [
             // 'user' => \App\Models\Users::class,
         ],
