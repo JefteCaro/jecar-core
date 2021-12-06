@@ -34,6 +34,13 @@ return [
         'table_prefix' => env('DB_PREFIX', null),
     ],
 
+    'subdomains' => [
+        'cms' => '',
+    ],
+
+    'paths' => [
+        'cms' => 'content',
+    ],
 
     'modules' => [
         /**

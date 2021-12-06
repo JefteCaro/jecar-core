@@ -10,7 +10,7 @@ use League\Glide\ServerFactory;
 use League\Glide\Responses\LaravelResponseFactory;
 use TusPhp\Tus\Server as TusServer;
 
-class MediaFileService
+class MediaFileService extends JecarService
 {
 
     private $config;
@@ -88,10 +88,5 @@ class MediaFileService
         if(!is_dir($path)) {
             mkdir($path, 0777, true);
         }
-    }
-
-    private function resourcePath(string $res)
-    {
-        return __DIR__ . '../../../resources/' . $res;
     }
 }
