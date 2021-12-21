@@ -21,8 +21,8 @@ return [
          *
          *
          */
-        'uploads' => 'uploads',
-        'cache' => 'cache',
+        'uploads' => 'app/public/uploads',
+        'cache' => 'app/cache',
     ],
 
     /**

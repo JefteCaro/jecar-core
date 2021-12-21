@@ -30,20 +30,20 @@ class JecarService
         return __DIR__ . '../../../resources/' . $res;
     }
 
-    // public function pathPrefix($key)
-    // {
-    //     if(! isset($this->config['paths'][$key])) {
-    //         return '/' . $key;
-    //     }
+    public function pathPrefix($key)
+    {
+        if(! isset($this->config['paths'][$key])) {
+            return '/' . $key;
+        }
 
-    //     $path = $this->config['paths'][$key];
+        $path = $this->config['paths'][$key];
 
-    //     if(! str_starts_with($path, '/')) {
-    //         $path = '/' . $path;
-    //     }
+        if(! str_starts_with($path, '/')) {
+            $path = '/' . $path;
+        }
 
-    //     return $path;
-    // }
+        return $path;
+    }
 
     public function getTableName($name)
     {

@@ -3,8 +3,6 @@
     "type": "library",
     "autoload": {
         "files": [
-            "vendor/laravel/framework/src/Illuminate/Collections/helpers.php",
-            "vendor/laravel/framework/src/Illuminate/Events/functions.php",
             "vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
             "vendor/laravel/framework/src/Illuminate/Support/helpers.php"
         ],
@@ -34,6 +32,6 @@
     },
     "require-dev": {
         "phpunit/phpunit": "9.5.x-dev",
-        "laravel/framework": "8.x-dev"
+        "laravel/framework": "^7|^8"
     }
 }

@@ -12,4 +12,18 @@ class JecarServiceTest extends TestCase
         $this->assertInstanceOf(JecarService::class, $obj);
     }
 
+    public function testGetConfig()
+    {
+        $obj = new JecarService;
+
+        $this->assertIsArray($obj->getConfig());
+    }
+
+    public function testGetTableName()
+    {
+        $obj = new JecarService;
+
+        $this->assertNotNull($obj->getTableName(''));
+    }
+
 }
