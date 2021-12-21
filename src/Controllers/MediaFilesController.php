@@ -15,6 +15,13 @@ class MediaFilesController extends BaseController
 
     public function show(Request $request, $path)
     {
+        $filePath = $this->uploadsDirectory() . '/' . $path;
+
+        if(!str_contains(mime_content_type($filePath), 'image'))
+        {
+            return response()->file($filePath);
+        }
+
         $server = MediaFile::fileServer();
 
         try {
@@ -46,5 +53,10 @@ class MediaFilesController extends BaseController
         });
 
         return $server->serve();
+    }
+
+    public function uploadsDirectory()
+    {
+        return app('jecar')->getConfig()['storage']['uploads'];
     }
 }

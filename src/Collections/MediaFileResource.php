@@ -21,6 +21,7 @@ class MediaFileResource extends JsonResource
             'path' => $this->path,
             'relative_path' => 'uploads/' . $this->path,
             'href' => route('jecar.media.file', ['path' => $this->path]),
+            'thumbnail' => $this->getThumbnail(),
             'created_at' => $this->created_at
         ];
     }

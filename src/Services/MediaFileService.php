@@ -13,11 +13,9 @@ use TusPhp\Tus\Server as TusServer;
 class MediaFileService extends JecarService
 {
 
-    private $config;
-
     public function __construct()
     {
-        $this->config = Config::get('jecar', require($this->resourcePath('config/jecar.php')));
+        parent::__construct();
     }
 
     public function fileServer()
