@@ -21,8 +21,8 @@ return [
          *
          *
          */
-        'uploads' => storage_path('app/jecar/uploads'),
-        'cache' => storage_path('app/jecar/cache'),
+        'uploads' => 'uploads',
+        'cache' => 'cache',
     ],
 
     /**

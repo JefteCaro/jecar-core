@@ -2,7 +2,7 @@
 
 namespace Jecar\Core\Services;
 
-use Illuminate\Support\Facades\Config;
+use Illuminate\Config\Repository as Config;
 use Illuminate\Support\Facades\Route;
 use Jecar\Core\Controllers\MediaFilesController;
 use Jecar\Core\Models\MediaFile;
@@ -17,7 +17,7 @@ class JecarService
 
     public function __construct()
     {
-        $this->config = Config::get('jecar', require($this->resourcePath('config/jecar.php')));
+        $this->config = (new Config)->get('jecar', require($this->resourcePath('config/jecar.php')));
     }
 
     public function getConfig()
@@ -30,20 +30,20 @@ class JecarService
         return __DIR__ . '../../../resources/' . $res;
     }
 
-    public function pathPrefix($key)
-    {
-        if(! isset($this->config['paths'][$key])) {
-            return '/' . $key;
-        }
+    // public function pathPrefix($key)
+    // {
+    //     if(! isset($this->config['paths'][$key])) {
+    //         return '/' . $key;
+    //     }
 
-        $path = $this->config['paths'][$key];
+    //     $path = $this->config['paths'][$key];
 
-        if(! str_starts_with($path, '/')) {
-            $path = '/' . $path;
-        }
+    //     if(! str_starts_with($path, '/')) {
+    //         $path = '/' . $path;
+    //     }
 
-        return $path;
-    }
+    //     return $path;
+    // }
 
     public function getTableName($name)
     {

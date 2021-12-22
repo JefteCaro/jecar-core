@@ -2,6 +2,12 @@
     "name": "jecar/core",
     "type": "library",
     "autoload": {
+        "files": [
+            "vendor/laravel/framework/src/Illuminate/Collections/helpers.php",
+            "vendor/laravel/framework/src/Illuminate/Events/functions.php",
+            "vendor/laravel/framework/src/Illuminate/Foundation/helpers.php",
+            "vendor/laravel/framework/src/Illuminate/Support/helpers.php"
+        ],
         "psr-4": {
             "Jecar\\Core\\": "src/"
         }
@@ -16,7 +22,7 @@
         "ankitpokhrel/tus-php": "*",
         "league/glide": "*",
         "league/glide-laravel": "dev-master",
-        "laravel/framework": "^7|^8"
+        "illuminate/support": "8.x-dev"
     },
     "minimum-stability": "dev",
     "extra": {
@@ -25,5 +31,9 @@
                 "Jecar\\Core\\Providers\\ServiceProvider"
             ]
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "9.5.x-dev",
+        "laravel/framework": "8.x-dev"
     }
 }
